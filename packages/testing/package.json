@@ -1,0 +1,25 @@
+{
+  "name": "@repo/testing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./vitest-config": "./vitest-config.ts",
+    "./setup": "./setup.ts"
+  },
+  "scripts": {
+    "test": "echo \"@repo/testing has no tests of its own\""
+  },
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/coverage-v8": "^2.1.4",
+    "jsdom": "^25.0.1",
+    "vite-tsconfig-paths": "^5.1.2",
+    "vitest": "^2.1.4"
+  }
+}

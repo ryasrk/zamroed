@@ -1,0 +1,40 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./app/*"
+      ],
+      "@repo/config": [
+        "./packages/config/src"
+      ],
+      "@repo/data": [
+        "./packages/data/src"
+      ],
+      "@repo/testing": [
+        "./packages/testing/src"
+      ],
+      "@repo/ui": [
+        "./packages/ui/src"
+      ]
+    },
+    "allowJs": true,
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "packages"
+  ]
+}

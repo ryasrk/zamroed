@@ -1,0 +1,7 @@
+# Repo mandiri: app ada di root, paket bersama di packages/*.
+# `allowBuilds` wajib agar postinstall esbuild berjalan (dipakai Vitest).
+packages:
+  - 'packages/*'
+
+allowBuilds:
+  esbuild: true

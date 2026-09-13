@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Shared editorial neutrals */
+    --canvas-warm: #faf8f5;
+    --surface-pure: #ffffff;
+    --text-ink: #111827;
+    --text-secondary: #4b5563;
+    --border-editorial: #e5e0d8;
+
+    /* Jagatirta river palette */
+    --river-deep-navy: #091e3a;
+    --river-surface-blue: #0e3558;
+    --river-teal-primary: #028090;
+    --river-cyan-vibrant: #00bfb2;
+    --status-good-green: #10b981;
+    --status-warning-amber: #f59e0b;
+    --status-critical-red: #ef4444;
+
+    /* ZAMROED movement palette */
+    --zamroed-deep: #064e3b;
+    --zamroed-primary: #047857;
+    --zamroed-light: #a7f3d0;
+    --gold-ochre: #d97706;
+    --gold-muted: #b45309;
+
+    /* Default brand aliases = Jagatirta */
+    --brand-deep: var(--river-deep-navy);
+    --brand-primary: var(--river-teal-primary);
+    --brand-accent: var(--river-cyan-vibrant);
+    --brand-soft: #ccfbf1;
+
+    /*
+     * RGB channels for the same tokens.
+     * Tailwind can only apply an opacity modifier (e.g. bg-brand-soft/40) when
+     * the colour resolves to space-separated RGB channels, which a whole
+     * var(--token) value cannot provide. These mirror the palettes above.
+     */
+    --canvas-warm-rgb: 250 248 245;
+    --surface-pure-rgb: 255 255 255;
+    --text-ink-rgb: 17 24 39;
+    --text-secondary-rgb: 75 85 99;
+    --border-editorial-rgb: 229 224 216;
+  }
+
+  .theme-jagatirta,
+  :root {
+    --brand-deep-rgb: 9 30 58;
+    --brand-primary-rgb: 2 128 144;
+    --brand-accent-rgb: 0 191 178;
+    --brand-soft-rgb: 204 251 241;
+  }
+
+  .theme-zamroed {
+    --brand-deep-rgb: 6 78 59;
+    --brand-primary-rgb: 4 120 87;
+    --brand-accent-rgb: 217 119 6;
+    --brand-soft-rgb: 167 243 208;
+  }
+
+  .theme-jagatirta {
+    --brand-deep: var(--river-deep-navy);
+    --brand-primary: var(--river-teal-primary);
+    --brand-accent: var(--river-cyan-vibrant);
+    --brand-soft: #ccfbf1;
+  }
+
+  .theme-zamroed {
+    --brand-deep: var(--zamroed-deep);
+    --brand-primary: var(--zamroed-primary);
+    --brand-accent: var(--gold-ochre);
+    --brand-soft: var(--zamroed-light);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--canvas-warm);
+    color: var(--text-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Fluid display type — no awkward breaks from 360px to 2560px */
+  .text-display {
+    font-size: clamp(2.125rem, 1.5rem + 2.6vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .text-section {
+    font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.25rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* Comfortable long-form reading measure */
+  .measure-editorial {
+    max-width: 740px;
+  }
+}

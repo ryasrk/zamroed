@@ -12,6 +12,7 @@
   "scripts": {
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "build": "pnpm -w run build",
     "vercel-build": "pnpm -w run vercel-build"
   },
   "devDependencies": {

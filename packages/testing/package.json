@@ -10,8 +10,8 @@
   },
   "scripts": {
     "test": "echo \"@repo/testing has no tests of its own\"",
-    "build": "pnpm -w run build",
-    "vercel-build": "pnpm -w run vercel-build"
+    "build": "pnpm -w run build && node ../../scripts/link-next-output.mjs",
+    "vercel-build": "pnpm -w run vercel-build && node ../../scripts/link-next-output.mjs"
   },
   "dependencies": {
     "@testing-library/dom": "^10.4.0",

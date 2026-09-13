@@ -10,7 +10,7 @@
     "tailwindcss": "^3.4.14"
   },
   "scripts": {
-    "build": "pnpm -w run build",
-    "vercel-build": "pnpm -w run vercel-build"
+    "build": "pnpm -w run build && node ../../scripts/link-next-output.mjs",
+    "vercel-build": "pnpm -w run vercel-build && node ../../scripts/link-next-output.mjs"
   }
 }

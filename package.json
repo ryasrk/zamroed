@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/verify-deploy.mjs && next build",
+    "postbuild": "node scripts/link-next-output.mjs",
     "vercel-build": "node scripts/verify-deploy.mjs && next build",
     "start": "next start",
     "lint": "next lint",

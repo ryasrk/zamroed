@@ -103,7 +103,8 @@ describe('Section', () => {
 
     const inner = container.querySelector('section > div')!;
     expect(inner.children).toHaveLength(1);
-    expect(inner.firstElementChild!.className).toContain('animate-fade-up');
+    // Header dibungkus Reveal, yang menandai dirinya lewat data-revealed.
+    expect(inner.firstElementChild).toHaveAttribute('data-revealed');
   });
 
   it.each(['left', 'center'] as SectionAlign[])('supports align=%s', (align) => {

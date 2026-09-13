@@ -39,7 +39,7 @@ const TONE: Record<RiverStatus, { pill: string; dot: string; ring: string }> = {
 };
 
 const SIZE = {
-  sm: 'h-6 gap-1.5 px-2.5 text-[11px]',
+  sm: 'h-6 gap-1.5 px-2.5 text-xs',
   md: 'h-8 gap-2 px-3.5 text-xs',
 } as const;
 

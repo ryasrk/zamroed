@@ -63,7 +63,7 @@ const IMAGE_STYLES = 'absolute inset-0 h-full w-full object-cover';
 const PLACEHOLDER_STYLES = [
   'absolute inset-0 flex items-center justify-center gap-2',
   'bg-[linear-gradient(135deg,var(--brand-deep),var(--brand-primary))]',
-  'px-4 text-center text-[11px] font-semibold uppercase leading-tight tracking-wide',
+  'px-4 text-center text-xs font-semibold uppercase leading-tight tracking-wide',
   'text-brand-soft',
 ].join(' ');
 

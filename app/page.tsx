@@ -20,6 +20,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Reveal,
+  RevealGroup,
   Section,
   StatCounter,
   ViewCounter,
@@ -175,7 +177,7 @@ function ProgramCard({ program }: { program: Program }) {
       interactive
       href="/program"
       aria-label={`Lihat program: ${program.title}`}
-      className="animate-fade-up motion-reduce:animate-none"
+     
     >
       <CardBody className="flex h-full flex-col gap-4">
         <ProgramIcon name={program.icon} />
@@ -196,7 +198,7 @@ function ArticleCard({ article }: { article: Article }) {
     <Card
       interactive
       href={`/liputan-aksi/${article.slug}`}
-      className="animate-fade-up motion-reduce:animate-none"
+     
     >
       <figure className="aspect-[16/9] w-full overflow-hidden bg-canvas">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -269,25 +271,37 @@ export default function Page() {
           className="absolute inset-x-0 bottom-0 -z-10 h-px bg-gradient-to-r from-transparent via-gold-ochre/60 to-transparent"
         />
 
-        <div className="mx-auto flex min-h-[80svh] max-w-7xl flex-col justify-center px-5 py-24 sm:px-8 md:min-h-[88svh] md:py-36">
-          <div className="animate-fade-up motion-reduce:animate-none">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold-ochre">
-              <span aria-hidden="true" className="h-px w-8 shrink-0 bg-gold-ochre/70" />
+        <div className="mx-auto flex min-h-[80svh] max-w-7xl flex-col justify-center px-5 py-section-normal sm:px-8 md:min-h-[88svh] md:py-section-loose">
+          <Reveal>
+            {/*
+              Label memakai nada emas terang, bukan `gold-ochre` pekat: teks
+              kapital kecil di atas foto berisiko gagal rasio kontras 4.5:1
+              yang disyaratkan WCAG AA untuk ukuran ini.
+            */}
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
+              <span aria-hidden="true" className="h-px w-8 shrink-0 bg-amber-300/80" />
               Gerakan Akar Rumput
             </p>
+          </Reveal>
 
+          <Reveal delay={80}>
             <h1 className="text-display measure-editorial mt-6 font-display font-bold text-white text-balance">
               Bergerak dari akar rumput, untuk Indonesia yang berdaulat.
             </h1>
+          </Reveal>
 
-            <p className="measure-editorial mt-6 text-base leading-relaxed text-white/80 md:text-lg">
+          <Reveal delay={150}>
+            <p className="measure-editorial mt-6 text-lg leading-relaxed text-white/90">
               Kami mendampingi warga desa, pesisir, dan bantaran sungai mengelola sumber daya
               alamnya sendiri — lalu hadir lebih dulu daripada siapa pun ketika bencana memaksa
               mereka bertahan.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <Reveal
+            delay={220}
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+          >
             <Button href="/volunteer" size="lg" variant="primary">
               Gabung Relawan
               <ArrowRight aria-hidden="true" className="h-5 w-5" strokeWidth={2} />
@@ -300,17 +314,19 @@ export default function Page() {
             >
               Kenali Sejarah Kami
             </Button>
-          </div>
+          </Reveal>
 
-          <p className="mt-10 flex items-center gap-3 text-sm text-white/70">
-            <span aria-hidden="true" className="h-px w-10 shrink-0 bg-gold-ochre/70" />
+          {/* Opacity dinaikkan dari 70% ke 85%: pada 14px di atas hijau gelap,
+              nada sebelumnya berada di ambang bawah keterbacaan. */}
+          <Reveal as="p" delay={300} className="mt-10 flex items-center gap-3 text-sm text-white/85">
+            <span aria-hidden="true" className="h-px w-10 shrink-0 bg-amber-300/80" />
             Berdiri sejak 2013, digerakkan sepenuhnya oleh relawan lapangan.
-          </p>
+          </Reveal>
         </div>
       </section>
 
       {/* ───────── 2. VISI & MISI ───────── */}
-      <Section id="visi-misi" className="py-20 md:py-32">
+      <Section id="visi-misi" density="loose">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-24">
           {/* Visi — pernyataan terpenting di halaman ini. */}
           <div className="border-l-4 border-gold-ochre pl-6 sm:pl-10">
@@ -361,12 +377,12 @@ export default function Page() {
         title="Tiga hal yang tidak kami tawar-menawar"
         description="Nilai bukan hiasan dinding. Ia yang menentukan siapa yang kami dampingi, bagaimana kami mengambil keputusan, dan kapan kami memilih mundur."
       >
-        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+        <RevealGroup className="card-grid gap-5 md:grid-cols-3 md:gap-6">
           {CORE_VALUES.map((value) => {
             const Icon = value.icon;
 
             return (
-              <Card key={value.title} className="animate-fade-up motion-reduce:animate-none">
+              <Card key={value.title}>
                 <CardBody className="flex h-full flex-col gap-4">
                   <span
                     aria-hidden="true"
@@ -385,7 +401,7 @@ export default function Page() {
               </Card>
             );
           })}
-        </div>
+        </RevealGroup>
       </Section>
 
       {/* ───────── 4. DAMPAK ───────── */}
@@ -417,11 +433,11 @@ export default function Page() {
         title="Empat cara kami bekerja di lapangan"
         description="Semuanya berjalan bersamaan, karena krisis ekologi jarang datang satu per satu — dan solusinya jarang bisa dipisah-pisah."
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
+        <RevealGroup className="card-grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {zamroedPrograms.map((program) => (
             <ProgramCard key={program.id} program={program} />
           ))}
-        </div>
+        </RevealGroup>
 
         <div className="mt-12">
           <Button href="/program" variant="secondary" size="md">
@@ -438,11 +454,11 @@ export default function Page() {
         title="Catatan dari titik aksi"
         description="Ditulis oleh relawan yang benar-benar berada di lokasi, lengkap dengan angka dan tanggalnya."
       >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <RevealGroup className="card-grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {FEATURED_ARTICLES.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
-        </div>
+        </RevealGroup>
 
         <div className="mt-12">
           <Link
@@ -456,8 +472,8 @@ export default function Page() {
       </Section>
 
       {/* ───────── 7. AJAKAN PENUTUP ───────── */}
-      <Section id="ajakan" className="py-20 md:py-28">
-        <div className="relative overflow-hidden rounded-3xl border border-editorial bg-surface px-6 py-16 sm:px-12 md:px-16 md:py-24">
+      <Section id="ajakan">
+        <div className="relative overflow-hidden rounded-2xl border border-editorial bg-surface px-6 py-section-normal sm:px-12 md:px-16 md:py-section-normal">
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-gold-ochre via-brand-primary to-brand-deep"

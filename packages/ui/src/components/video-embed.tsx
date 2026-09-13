@@ -399,7 +399,7 @@ function FallbackCard({ url, platform, title, caption, className }: FallbackCard
     <figure className={cn(FIGURE_BASE, className)}>
       <div className="aspect-video w-full overflow-hidden rounded-2xl border border-editorial bg-canvas">
         <div className="flex h-full w-full flex-col justify-between p-5 sm:p-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-primary">
             {PLATFORM_LABELS[platform]}
           </p>
 
@@ -638,7 +638,7 @@ function FacadePlayer({
 
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute bottom-3 left-3 z-20 rounded-full bg-black/70 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white"
+              className="pointer-events-none absolute bottom-3 left-3 z-20 rounded-full bg-black/70 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider text-white"
             >
               {label}
             </span>

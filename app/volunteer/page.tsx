@@ -190,7 +190,7 @@ function DivisionCard({
           </p>
 
           {program ? (
-            <p className="flex items-center gap-2 text-[11px] font-semibold uppercase leading-snug tracking-[0.14em] text-ink-secondary">
+            <p className="flex items-center gap-2 text-xs font-semibold uppercase leading-snug tracking-[0.14em] text-ink-secondary">
               <BadgeCheck aria-hidden="true" focusable="false" className="h-4 w-4 shrink-0 text-brand-primary" />
               {program.title}
             </p>
@@ -247,7 +247,7 @@ export default function VolunteerPage() {
                 yang dibagikan, dan kesediaan hadir saat warga paling membutuhkan.
               </p>
 
-              <p className="measure-editorial mt-4 text-base leading-relaxed text-white/75">
+              <p className="measure-editorial mt-4 text-base leading-relaxed text-white/85">
                 Isi formulirnya dalam dua menit, pilih divisi yang paling dekat dengan
                 kemampuanmu, dan mulai dari sana. Tidak ada pengalaman minimum — yang kami minta
                 hanya kesediaan belajar dan menaati kode etik gerakan.
@@ -271,7 +271,7 @@ export default function VolunteerPage() {
               <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
                 {MOVEMENT_STATS.map((stat) => (
                   <div key={stat.label} className="flex flex-col gap-1">
-                    <dt className="order-2 text-xs font-medium uppercase tracking-wider text-white/65">
+                    <dt className="order-2 text-xs font-medium uppercase tracking-wider text-white/85">
                       {stat.label}
                     </dt>
                     <dd className="order-1 font-display text-4xl font-bold leading-none text-gold-ochre">
@@ -341,7 +341,7 @@ export default function VolunteerPage() {
                 <p className="measure-editorial text-[0.9375rem] leading-relaxed text-white/80 md:text-base">
                   {item.detail}
                 </p>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/85">
                   <MapPinned aria-hidden="true" focusable="false" className="h-4 w-4 shrink-0" />
                   {item.duration}
                 </p>
@@ -427,7 +427,7 @@ export default function VolunteerPage() {
       </Section>
 
       {/* ── Ajakan penutup ───────────────────────────────────────────────── */}
-      <section className="border-t border-editorial bg-surface-pure px-5 py-16 sm:px-8 md:py-24">
+      <section className="border-t border-editorial bg-surface-pure px-5 py-section-normal sm:px-8 md:py-section-normal">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-brand-primary">
             <span aria-hidden="true" className="h-px w-8 shrink-0 bg-brand-primary opacity-60" />

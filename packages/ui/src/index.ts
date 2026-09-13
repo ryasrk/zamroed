@@ -23,7 +23,15 @@ export type {
 } from './components/card';
 
 export { Section } from './components/section';
-export type { SectionProps, SectionAlign, SectionTone } from './components/section';
+export type {
+  SectionProps,
+  SectionAlign,
+  SectionTone,
+  SectionDensity,
+} from './components/section';
+
+export { Reveal, RevealGroup } from './components/reveal';
+export type { RevealProps, RevealGroupProps, RevealDirection } from './components/reveal';
 
 export { StatCounter } from './components/stat-counter';
 export type { StatCounterProps } from './components/stat-counter';

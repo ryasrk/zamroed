@@ -100,21 +100,48 @@
 }
 
 @layer utilities {
-  /* Fluid display type — no awkward breaks from 360px to 2560px */
+  /*
+   * Tipe tampilan mengikuti skala modular rasio emas di preset Tailwind
+   * (step-6 dan step-4), jadi judul selalu sekeluarga rasio dengan teks isi
+   * alih-alih memakai nilai clamp sendiri yang lepas dari skala.
+   */
   .text-display {
-    font-size: clamp(2.125rem, 1.5rem + 2.6vw, 3.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-size: clamp(3.3441rem, 3.0817rem + 1.166vw, 3.8338rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
   }
 
   .text-section {
-    font-size: clamp(1.625rem, 1.3rem + 1.4vw, 2.25rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.4266rem, 2.2361rem + 0.847vw, 2.7817rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
 
-  /* Comfortable long-form reading measure */
+  /*
+   * Panjang baris dalam `ch`, bukan piksel. Pengukuran sebelum perubahan
+   * menunjukkan 740px pada teks 18px menghasilkan ±82 karakter per baris —
+   * di atas rentang nyaman 45–75. Satuan `ch` menjaga jumlah karakter tetap
+   * stabil ketika ukuran font ikut berubah.
+   */
   .measure-editorial {
-    max-width: 740px;
+    max-width: 65ch;
+  }
+
+  /* Untuk paragraf pengiring hero dan kutipan: lebih pendek, lebih bertenaga. */
+  .measure-narrow {
+    max-width: 52ch;
+  }
+
+  /*
+   * Menjaga bagian bawah kartu tetap sejajar antar kolom pada kisi. Tanpa ini,
+   * kartu dengan panjang teks berbeda membuat garis footer bergerigi.
+   */
+  .card-grid {
+    display: grid;
+    align-items: stretch;
+  }
+
+  .card-grid > * {
+    height: 100%;
   }
 }

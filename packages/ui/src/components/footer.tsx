@@ -167,7 +167,7 @@ const FOCUS_RING =
 
 const LINK_CLASS = cn(
   'inline-flex min-h-12 items-center rounded-lg text-sm leading-relaxed',
-  'text-white/70 transition-colors duration-200 ease-crisp hover:text-white',
+  'text-white/85 transition-colors duration-200 ease-crisp hover:text-white',
   FOCUS_RING,
 );
 
@@ -231,7 +231,7 @@ export function Footer({
                 <span aria-hidden="true" className="mr-2 inline-block h-2.5 w-2.5 rounded-full bg-brand-accent align-middle" />
                 {brandName}
               </p>
-              <p className="measure-editorial mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+              <p className="measure-editorial mt-4 max-w-sm text-sm leading-relaxed text-white/85">
                 {tagline}
               </p>
 
@@ -245,7 +245,7 @@ export function Footer({
                           <span className="break-all">{item.value}</span>
                         </a>
                       ) : (
-                        <p className="flex min-h-12 items-start gap-2 py-3 text-sm leading-relaxed text-white/70">
+                        <p className="flex min-h-12 items-start gap-2 py-3 text-sm leading-relaxed text-white/85">
                           <span className="shrink-0 text-white/45">{item.label}:</span>
                           <span>{item.value}</span>
                         </p>
@@ -269,7 +269,7 @@ export function Footer({
                           aria-label={`Kunjungi ${social.platform}`}
                           className={cn(
                             'inline-flex h-12 w-12 items-center justify-center rounded-xl',
-                            'border border-white/15 bg-white/5 text-white/75',
+                            'border border-white/15 bg-white/5 text-white/85',
                             'transition-colors duration-200 ease-crisp hover:bg-white/12 hover:text-white',
                             FOCUS_RING,
                           )}
@@ -330,7 +330,7 @@ export function Footer({
             hasTop ? 'mt-10 border-t border-white/12' : 'pt-0',
           )}
         >
-          <p className="text-sm leading-relaxed text-white/65">
+          <p className="text-sm leading-relaxed text-white/85">
             © {copyrightYear}{' '}
             <span className="font-semibold text-white/85">{brandName}</span>. Hak cipta dilindungi
             undang-undang.

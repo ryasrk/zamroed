@@ -143,7 +143,7 @@ export function MetricBar({
     <div className={cn('flex min-w-0 flex-col gap-2.5', className)}>
       {hideHeader ? null : (
         <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <span className="min-w-0 text-[13px] font-semibold uppercase leading-tight tracking-[0.08em] text-ink-secondary">
+          <span className="min-w-0 text-sm font-semibold uppercase leading-tight tracking-[0.08em] text-ink-secondary">
             {label}
           </span>
 
@@ -152,7 +152,7 @@ export function MetricBar({
               {formatNumber(finalValue)}
             </span>
             {unit ? (
-              <span className="font-mono text-[11px] font-medium leading-none text-ink-secondary">
+              <span className="font-mono text-xs font-medium leading-none text-ink-secondary">
                 {unit}
               </span>
             ) : null}
@@ -211,22 +211,22 @@ export function MetricBar({
 
       {/* Pasangan aman/brand dibacakan sebagai skala minimum & maksimum. */}
       <div className="flex items-center justify-between gap-3">
-        <span className="font-mono text-[11px] leading-none text-ink-secondary">
+        <span className="font-mono text-xs leading-none text-ink-secondary">
           {formatNumber(safeMin)}
         </span>
 
         {hint ? (
-          <span className="min-w-0 truncate text-center text-[11px] leading-tight text-ink-secondary">
+          <span className="min-w-0 truncate text-center text-xs leading-tight text-ink-secondary">
             {hint}
           </span>
         ) : hasSafeZone && safeZoneLabel ? (
-          <span className="min-w-0 truncate text-center text-[11px] leading-tight text-ink-secondary">
+          <span className="min-w-0 truncate text-center text-xs leading-tight text-ink-secondary">
             Zona aman {safeZoneLabel}
             {unit ? ` ${unit}` : ''}
           </span>
         ) : null}
 
-        <span className="font-mono text-[11px] leading-none text-ink-secondary">
+        <span className="font-mono text-xs leading-none text-ink-secondary">
           {formatNumber(safeTop)}
         </span>
       </div>

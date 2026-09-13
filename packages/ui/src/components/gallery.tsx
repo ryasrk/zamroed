@@ -468,7 +468,7 @@ export function Gallery({
                   {active.alt}
                 </span>
                 {active.caption ? (
-                  <span className="mt-1 block text-xs leading-relaxed text-white/70">
+                  <span className="mt-1 block text-xs leading-relaxed text-white/85">
                     {active.caption}
                   </span>
                 ) : null}
@@ -476,7 +476,7 @@ export function Gallery({
             </figure>
 
             {hasMultiple ? (
-              <p aria-hidden="true" className="text-center text-[11px] tracking-wide text-white/60">
+              <p aria-hidden="true" className="text-center text-xs tracking-wide text-white/85">
                 Gunakan tombol panah kiri/kanan untuk berpindah foto, Escape untuk menutup.
               </p>
             ) : null}

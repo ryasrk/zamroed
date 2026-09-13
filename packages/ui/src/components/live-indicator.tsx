@@ -29,7 +29,7 @@ const TONE_LABELS: Record<LiveIndicatorTone, string> = {
 };
 
 const SIZE = {
-  sm: { wrapper: 'h-6 gap-2 text-[11px]', dot: 'h-2 w-2', ring: 'h-2 w-2' },
+  sm: { wrapper: 'h-6 gap-2 text-xs', dot: 'h-2 w-2', ring: 'h-2 w-2' },
   md: { wrapper: 'h-8 gap-2.5 text-xs', dot: 'h-2.5 w-2.5', ring: 'h-2.5 w-2.5' },
 } as const;
 

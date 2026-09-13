@@ -1,9 +1,30 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { cn } from '../lib/cn';
+import { Reveal } from './reveal';
 
 export type SectionAlign = 'left' | 'center';
 export type SectionTone = 'light' | 'dark';
+
+/**
+ * Tingkat kepadatan vertikal. Sebelumnya tiap halaman menuliskan padding
+ * sendiri, sehingga muncul enam nilai berbeda tanpa alasan yang jelas.
+ * Memusatkannya di tiga tingkat membuat ritme halaman terbaca.
+ */
+export type SectionDensity = 'compact' | 'normal' | 'loose';
+
+const DENSITY_PAD: Record<SectionDensity, string> = {
+  compact: 'py-section-compact',
+  normal: 'py-section-normal',
+  loose: 'py-section-loose',
+};
+
+/** Jarak header section ke isinya, mengikuti kepadatan yang sama. */
+const DENSITY_GAP: Record<SectionDensity, string> = {
+  compact: 'mt-7 md:mt-9',
+  normal: 'mt-9 md:mt-12',
+  loose: 'mt-12 md:mt-16',
+};
 
 export interface SectionProps extends ComponentPropsWithoutRef<'section'> {
   /** Judul utama bagian — dirender sebagai <h2> dengan utilitas .text-section. */
@@ -16,6 +37,8 @@ export interface SectionProps extends ComponentPropsWithoutRef<'section'> {
   align?: SectionAlign;
   /** Nada latar: 'light' = canvas hangat, 'dark' = biru/ hijau dalam brand. */
   tone?: SectionTone;
+  /** Kepadatan ruang vertikal. Default 'normal'. */
+  density?: SectionDensity;
   /** Anchor untuk navigasi lompat (#id). */
   id?: string;
   className?: string;
@@ -34,6 +57,7 @@ export function Section({
   description,
   align = 'left',
   tone = 'light',
+  density = 'normal',
   id,
   className,
   children,
@@ -49,7 +73,8 @@ export function Section({
       id={id}
       aria-labelledby={hasHeader ? headingId : undefined}
       className={cn(
-        'relative isolate scroll-mt-20 overflow-hidden px-5 py-16 sm:px-8 md:py-24',
+        'relative isolate scroll-mt-20 overflow-hidden px-5 sm:px-8',
+        DENSITY_PAD[density],
         isDark ? 'bg-brand-deep text-white' : 'bg-canvas text-ink',
         className,
       )}
@@ -64,9 +89,8 @@ export function Section({
 
       <div className="mx-auto max-w-7xl">
         {hasHeader ? (
-          <div
+          <Reveal
             className={cn(
-              'animate-fade-up',
               isCenter ? 'flex flex-col items-center text-center' : 'flex flex-col items-start',
             )}
           >
@@ -104,7 +128,7 @@ export function Section({
             {description ? (
               <p
                 className={cn(
-                  'measure-editorial mt-4 text-base leading-relaxed md:text-lg',
+                  'measure-editorial mt-4 text-base leading-relaxed',
                   isDark ? 'text-white opacity-80' : 'text-ink-secondary',
                   isCenter ? 'mx-auto' : undefined,
                 )}
@@ -112,11 +136,11 @@ export function Section({
                 {description}
               </p>
             ) : null}
-          </div>
+          </Reveal>
         ) : null}
 
         {children ? (
-          <div className={cn(hasHeader ? 'mt-10 md:mt-14' : undefined)}>
+          <div className={cn(hasHeader ? DENSITY_GAP[density] : undefined)}>
             {children}
           </div>
         ) : null}

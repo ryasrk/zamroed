@@ -56,7 +56,7 @@ export function Badge({
 }: BadgeProps) {
   const shell = cn(
     'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1',
-    'text-[11px] font-semibold uppercase leading-none tracking-wide',
+    'text-xs font-semibold uppercase leading-none tracking-wide',
     'transition-colors duration-200 ease-crisp',
     TONE_STYLES[tone],
     href &&

@@ -164,7 +164,7 @@ function FeatureBand({ program }: { program: Program }) {
   return (
     <article
       aria-labelledby={`pilar-${program.slug}`}
-      className="grid overflow-hidden rounded-3xl border border-editorial bg-surface shadow-sm lg:grid-cols-12"
+      className="grid overflow-hidden rounded-2xl border border-editorial bg-surface shadow-sm lg:grid-cols-12"
     >
       {/* Media: rasio aspek dikunci pembungkus sehingga CLS = 0. */}
       <div className="relative isolate aspect-[4/3] lg:col-span-7 lg:aspect-auto lg:min-h-[26rem]">
@@ -261,7 +261,7 @@ function ProgramCard({
       </div>
 
       <CardBody className="flex flex-col gap-4">
-        <p className="flex items-center gap-2.5 text-[11px] font-semibold uppercase leading-snug tracking-[0.16em] text-brand-primary">
+        <p className="flex items-center gap-2.5 text-xs font-semibold uppercase leading-snug tracking-[0.16em] text-brand-primary">
           <Icon aria-hidden="true" focusable="false" className="h-4 w-4 shrink-0" />
           {detail.kicker}
         </p>
@@ -308,7 +308,7 @@ export default function ProgramPage() {
   return (
     <main className="bg-canvas">
       {/* ── Hero kompak ───────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-brand-deep px-5 py-14 text-white sm:px-8 md:py-20">
+      <section className="relative isolate overflow-hidden bg-brand-deep px-5 py-section-compact text-white sm:px-8 md:py-section-normal">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-20 -top-24 -z-10 h-64 w-64 rounded-full bg-brand-primary opacity-25 blur-3xl"
@@ -386,7 +386,7 @@ export default function ProgramPage() {
           </ol>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-3xl border border-white/15">
+            <div className="overflow-hidden rounded-2xl border border-white/15">
               <div className="relative aspect-[4/3] w-full bg-brand-primary/20">
                 <img
                   src="/images/kedaulatan-pangan.jpg"
@@ -400,7 +400,7 @@ export default function ProgramPage() {
               </div>
             </div>
 
-            <p className="measure-editorial mt-6 text-[0.9375rem] leading-relaxed text-white/75">
+            <p className="measure-editorial mt-6 text-[0.9375rem] leading-relaxed text-white/85">
               Semua data mutu air yang kami himpun dibuka apa adanya untuk publik — termasuk
               temuan yang belum menggembirakan — agar warga bisa menuntut perbaikan dengan
               bukti, bukan sekadar dugaan.
@@ -420,7 +420,7 @@ export default function ProgramPage() {
       </Section>
 
       {/* ── Ajakan terlibat ──────────────────────────────────────────── */}
-      <section className="border-t border-editorial bg-surface-pure px-5 py-16 sm:px-8 md:py-24">
+      <section className="border-t border-editorial bg-surface-pure px-5 py-section-normal sm:px-8 md:py-section-normal">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-brand-primary">
             <span aria-hidden="true" className="h-px w-8 shrink-0 bg-brand-primary opacity-60" />

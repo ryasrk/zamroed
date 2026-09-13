@@ -47,8 +47,8 @@ export default function SejarahPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
             <div className="animate-fade-up">
-              <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gold-ochre">
-                <span aria-hidden="true" className="h-px w-8 shrink-0 bg-gold-ochre opacity-70" />
+              <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-amber-300">
+                <span aria-hidden="true" className="h-px w-8 shrink-0 bg-amber-300/80" />
                 Arsip Gerakan
               </p>
 
@@ -61,7 +61,7 @@ export default function SejarahPage() {
                 pendanaan, tanpa nama.
               </p>
 
-              <p className="measure-editorial mt-4 text-base leading-relaxed text-white/70 md:text-lg">
+              <p className="measure-editorial mt-4 text-base leading-relaxed text-white/85 md:text-lg">
                 Kami menuliskan asal-usul ini bukan untuk mengenang, melainkan untuk
                 mempertanggungjawabkannya. Arah gerakan hanya bisa dinilai secara adil jika
                 pembaca tahu dari mana ia berangkat, apa yang pernah gagal, dan janji mana yang
@@ -71,7 +71,7 @@ export default function SejarahPage() {
 
             {/* Kartu ringkasan arsip — kaca gelap agar tetap terbaca di atas hero. */}
             <div className="animate-fade-up rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/85">
                 Rentang Arsip
               </p>
               <p className="mt-3 font-mono text-3xl font-bold leading-none text-white sm:text-4xl">
@@ -103,7 +103,7 @@ export default function SejarahPage() {
                 </div>
               </dl>
 
-              <p className="mt-7 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/70">
+              <p className="mt-7 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/85">
                 Disusun dari arsip internal, catatan rapat warga, dan liputan pers yang
                 terdokumentasi.
               </p>

@@ -248,7 +248,7 @@ export function CampaignCard({
       )}
     >
       <CardHeader action={action}>
-        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase leading-none tracking-[0.14em] text-brand-primary">
+        <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase leading-none tracking-[0.14em] text-brand-primary">
           <span className="[&_svg]:block" aria-hidden="true">
             {type === 'dana' ? <CoinIcon /> : <SignatureIcon />}
           </span>
@@ -261,7 +261,7 @@ export function CampaignCard({
       </CardHeader>
 
       <CardBody className="flex flex-col gap-4">
-        <p className="measure-editorial text-sm leading-relaxed text-ink-secondary sm:text-[0.9375rem]">
+        <p className="measure-editorial text-sm leading-relaxed text-ink-secondary">
           {description}
         </p>
 

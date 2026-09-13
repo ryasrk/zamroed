@@ -196,7 +196,7 @@ export default function LiputanAksiPage() {
           className="pointer-events-none absolute -bottom-40 left-1/4 -z-10 h-72 w-72 rounded-full bg-brand-accent opacity-10 blur-3xl"
         />
 
-        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-5 py-section-compact sm:px-8 sm:py-section-normal">
           <div className="animate-fade-up">
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-brand-accent">
               <span aria-hidden="true" className="h-px w-8 shrink-0 bg-brand-accent opacity-70" />
@@ -221,7 +221,7 @@ export default function LiputanAksiPage() {
               { label: 'Siaran pers terbaru', nilai: SIARAN_PERS.length },
             ].map((metrik) => (
               <div key={metrik.label} className="bg-brand-deep px-5 py-4">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-accent">
+                <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-accent">
                   {metrik.label}
                 </dt>
                 <dd className="mt-2 font-display text-2xl font-bold tabular-nums text-white">

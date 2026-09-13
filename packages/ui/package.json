@@ -11,7 +11,8 @@
   "scripts": {
     "lint": "echo no lint",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "vercel-build": "pnpm -w run vercel-build"
   },
   "dependencies": {
     "clsx": "^2.1.1",

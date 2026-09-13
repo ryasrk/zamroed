@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "vercel-build": "pnpm -w run vercel-build"
   },
   "devDependencies": {
     "@repo/testing": "file:../testing",

@@ -8,5 +8,8 @@
   },
   "dependencies": {
     "tailwindcss": "^3.4.14"
+  },
+  "scripts": {
+    "vercel-build": "pnpm -w run vercel-build"
   }
 }

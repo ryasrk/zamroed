@@ -9,7 +9,8 @@
     "./setup": "./setup.ts"
   },
   "scripts": {
-    "test": "echo \"@repo/testing has no tests of its own\""
+    "test": "echo \"@repo/testing has no tests of its own\"",
+    "vercel-build": "pnpm -w run vercel-build"
   },
   "dependencies": {
     "@testing-library/dom": "^10.4.0",

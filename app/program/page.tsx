@@ -141,8 +141,8 @@ function ActivityList({ activities, tone = 'light', className }: ActivityListPro
           <span
             className={
               isDark
-                ? 'text-[0.9375rem] leading-relaxed text-white/90 md:text-base'
-                : 'text-[0.9375rem] leading-relaxed text-ink md:text-base'
+                ? 'text-sm leading-relaxed text-white/90 md:text-base'
+                : 'text-sm leading-relaxed text-ink md:text-base'
             }
           >
             {activity}
@@ -273,7 +273,7 @@ function ProgramCard({
           {program.title}
         </h3>
 
-        <p className="text-[0.9375rem] leading-relaxed text-ink-secondary">
+        <p className="text-sm leading-relaxed text-ink-secondary">
           {program.description}
         </p>
 
@@ -346,7 +346,7 @@ export default function ProgramPage() {
             <FeatureBand program={feature} />
 
             {rest.length > 0 ? (
-              <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+              <div className="grid gap-grid-normal md:grid-cols-3 md:gap-grid-normal">
                 {rest.map((program, index) => (
                   <ProgramCard
                     key={program.id}
@@ -378,7 +378,7 @@ export default function ProgramPage() {
                 <h3 className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">
                   {point.title}
                 </h3>
-                <p className="measure-editorial mt-3 text-[0.9375rem] leading-relaxed text-white/80 md:text-base">
+                <p className="measure-editorial mt-3 text-sm leading-relaxed text-white/80 md:text-base">
                   {point.body}
                 </p>
               </li>
@@ -391,7 +391,7 @@ export default function ProgramPage() {
                 <img
                   src="/images/kedaulatan-pangan.jpg"
                   alt="Relawan ZAMROED Bergerak memantau aliran sungai bersama warga bantaran sebagai bagian dari kerja River Watch."
-                  width={1200}
+                  width={1600}
                   height={900}
                   loading="lazy"
                   decoding="async"
@@ -400,7 +400,7 @@ export default function ProgramPage() {
               </div>
             </div>
 
-            <p className="measure-editorial mt-6 text-[0.9375rem] leading-relaxed text-white/85">
+            <p className="measure-editorial mt-6 text-sm leading-relaxed text-white/85">
               Semua data mutu air yang kami himpun dibuka apa adanya untuk publik — termasuk
               temuan yang belum menggembirakan — agar warga bisa menuntut perbaikan dengan
               bukti, bukan sekadar dugaan.

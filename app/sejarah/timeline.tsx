@@ -198,7 +198,13 @@ export function Timeline({ milestones, className }: TimelineProps) {
                 aria-current={isActive ? 'step' : undefined}
                 className="scroll-mt-28"
               >
-                <div className="grid items-start gap-x-12 md:grid-cols-2 md:gap-y-0">
+                {/*
+                  `items-start` menempelkan kolom tahun (63px) ke atap baris
+                  sementara kartu di sebelahnya setinggi ~630px, menyisakan
+                  569px ruang mati yang membuat zigzag terasa pincang.
+                  Rata-tengah menempatkan tahun pada sumbu optis kartunya.
+                */}
+                <div className="grid items-center gap-x-12 md:grid-cols-2 md:gap-y-0">
                   {/* ── Kolom tahun ────────────────────────────────────────────
                       Mobile: satu baris ringkas bersama penanda simpul.
                       Desktop: kolom kiri/kanan penuh, tahun ditampilkan besar. */}

@@ -142,7 +142,7 @@ export default function SejarahPage() {
         title="Bukan Menjadi Besar, Melainkan Menjadi Berguna"
         description="Para pendiri tidak pernah menulis target jumlah anggota atau wilayah. Yang mereka tulis adalah satu syarat: gerakan ini harus tetap dimiliki warga yang menjalankannya. Setiap regenerasi wajib bisa membaca ulang piagam 2003 dan merasa ia masih berbicara tentang hari ini."
       >
-        <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-grid-normal sm:grid-cols-2">
           <div className="rounded-2xl border border-white/15 bg-white/5 p-6 text-left backdrop-blur-sm sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-ochre">
               Yang kami jaga

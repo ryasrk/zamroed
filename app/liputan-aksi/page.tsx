@@ -303,7 +303,7 @@ export default function LiputanAksiPage() {
         ) : null}
 
         {/* Liputan lainnya dalam grid dua sampai tiga kolom. */}
-        <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <ul className="mt-10 grid grid-cols-1 gap-grid-normal sm:grid-cols-2 lg:grid-cols-3 lg:gap-grid-normal">
           {sisanya.map((artikel) => (
             <li key={artikel.id} className="flex">
               <Card interactive className="w-full">
@@ -338,15 +338,27 @@ export default function LiputanAksiPage() {
                   <p className="line-clamp-3">{artikel.excerpt}</p>
                 </CardBody>
 
-                <CardFooter divider className="flex-col items-start gap-3">
-                  <p className="text-sm text-ink-secondary">
+                {/*
+                  Area isi kaki kartu hanya 355px, sedangkan penulis +
+                  tanggal + penghitung bacaan butuh 528px — selisih 173px.
+                  Karena satu baris mustahil, baris dipisah secara sengaja
+                  dan rapi: identitas penulis di atas, metrik bacaan di
+                  bawah, dengan garis pemisah halus agar terbaca sebagai
+                  keputusan desain, bukan teks yang terpotong.
+                */}
+                <CardFooter divider className="flex-col items-stretch gap-2.5">
+                  <p className="flex flex-wrap items-baseline gap-x-2 text-sm text-ink-secondary">
                     <span className="font-semibold text-ink">{artikel.author}</span>
-                    <span aria-hidden="true" className="select-none px-2 text-editorial">
+                    <span aria-hidden="true" className="select-none text-editorial">
                       •
                     </span>
                     <time dateTime={artikel.publishedAt}>{formatDate(artikel.publishedAt)}</time>
                   </p>
-                  <ViewCounter views={artikel.totalViews} readMinutes={artikel.readMinutes} />
+                  <ViewCounter
+                    views={artikel.totalViews}
+                    readMinutes={artikel.readMinutes}
+                    compact
+                  />
                 </CardFooter>
               </Card>
             </li>
@@ -379,22 +391,26 @@ export default function LiputanAksiPage() {
           </div>
 
           <ul className="mt-10 divide-y divide-editorial border-y border-editorial md:mt-14">
-            {SIARAN_PERS.map((siaran, indeks) => (
+            {SIARAN_PERS.map((siaran) => (
               <li key={siaran.id}>
-                <div className="grid gap-6 py-7 md:grid-cols-12 md:items-start md:gap-8 md:py-8">
-                  <div className="flex items-start gap-4 md:col-span-1">
+                {/*
+                  Kolom penanda dijadikan satu kolom tetap selebar ikonnya
+                  (44px), bukan `col-span-1` dari 12 yang menyisakan 33px
+                  menganggur — sisa itu yang membuat ikon tidak sejajar dengan
+                  judul di sebelahnya. Rata-atas dipakai agar ikon duduk pada
+                  baris pertama judul, bukan pada titik tengah blok.
+                */}
+                <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-5 gap-y-6 py-7 md:grid-cols-[2.75rem_minmax(0,1fr)_auto] md:items-start md:gap-x-8 md:py-8">
+                  <div className="flex items-center gap-4 md:items-start">
                     <span
                       aria-hidden="true"
                       className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand-deep"
                     >
                       <DokumenIkon kelas="h-5 w-5" />
                     </span>
-                    <span className="font-display text-2xl font-bold tabular-nums text-editorial md:hidden">
-                      {String(indeks + 1).padStart(2, '0')}
-                    </span>
                   </div>
 
-                  <div className="md:col-span-8">
+                  <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2.5">
                       <Badge tone="neutral">Siaran Pers</Badge>
                       <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-secondary">
@@ -419,7 +435,11 @@ export default function LiputanAksiPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col items-start gap-2 md:col-span-3 md:items-end">
+                  {/*
+                    Di layar sempit tombol aksi turun ke baris kedua, sejajar
+                    dengan teks isi — bukan lagi tergantung di lebar 3/12 kolom.
+                  */}
+                  <div className="col-start-2 flex flex-wrap items-center gap-x-3 gap-y-2 md:col-start-auto md:flex-col md:items-end md:gap-2">
                     <Button href="#" variant="outline" size="sm">
                       Unduh PDF
                     </Button>

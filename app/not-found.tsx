@@ -43,7 +43,7 @@ export default function NotFound() {
       description="Alamat yang Anda tuju mungkin sudah dipindahkan, diganti namanya, atau memang belum pernah ada. Silakan pilih salah satu tautan di bawah untuk melanjutkan."
     >
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center">
-        <ul className="grid w-full list-none gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid w-full list-none gap-grid-tight text-left sm:grid-cols-2 lg:grid-cols-3">
           {HELPFUL_LINKS.map((item) => (
             <li key={item.href}>
               <Link

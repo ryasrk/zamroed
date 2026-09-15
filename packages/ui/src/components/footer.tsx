@@ -224,7 +224,7 @@ export function Footer({
 
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 md:py-20">
         {hasTop ? (
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div className="grid grid-cols-1 gap-grid-loose sm:grid-cols-2 lg:grid-cols-4 lg:gap-grid-normal">
             {/* Identitas brand */}
             <div className="animate-fade-up sm:col-span-2 lg:col-span-1">
               <p className="text-lg font-bold tracking-tight text-white">

@@ -373,7 +373,7 @@ export function CheckboxGroup({
                 <span className="min-w-0 flex-1">
                   <span
                     className={cn(
-                      'block text-[0.9375rem] font-semibold leading-6',
+                      'block text-sm font-semibold leading-6',
                       isSelected ? 'text-brand-deep' : 'text-ink',
                     )}
                   >

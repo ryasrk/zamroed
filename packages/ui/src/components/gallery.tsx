@@ -393,7 +393,7 @@ export function Gallery({
           role="dialog"
           aria-modal="true"
           aria-label={label}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-3 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
         >
           {/* Backdrop: klik di luar gambar menutup lightbox. */}
           <button
@@ -404,9 +404,15 @@ export function Gallery({
             className="absolute inset-0 h-full w-full cursor-default focus-visible:outline-none"
           />
 
-          <div className="relative flex w-full max-w-5xl flex-col gap-3">
+          {/*
+            Batas tinggi di tingkat panel: tanpa ini gambar yang sangat tinggi
+            mendorong baris nomor dan keterangan keluar viewport, sehingga
+            separuh isi modal tidak dapat dijangkau tanpa menggulir halaman
+            yang terkunci.
+          */}
+          <div className="relative flex max-h-full w-full max-w-5xl flex-col gap-3">
             <div className="pointer-events-none flex items-start justify-between gap-3">
-              <p className="pointer-events-auto rounded-lg bg-black/45 px-3 py-1.5 text-xs font-medium tabular-nums text-white">
+              <p className="pointer-events-auto rounded-lg bg-black/60 px-3 py-1.5 text-xs font-medium tabular-nums text-white">
                 {`Foto ${(safeIndex ?? 0) + 1} dari ${total}`}
               </p>
 
@@ -421,13 +427,19 @@ export function Gallery({
               </button>
             </div>
 
-            <figure className="flex min-w-0 flex-col items-center gap-3">
-              <div className="relative flex max-h-[70vh] w-full items-center justify-center">
+            <figure className="flex min-h-0 min-w-0 flex-col items-center gap-3">
+              {/*
+                Lebar mengikuti rasio asli gambar (`w-auto`) dengan plafon
+                tinggi 68vh. Cara ini membuat foto lanskap lebar maupun potret
+                tinggi sama-sama tampil utuh — tanpa terpotong, dan tanpa
+                menyisakan pita kosong lebar di kiri-kanan saat fotonya potret.
+              */}
+              <div className="relative flex min-h-0 w-full flex-1 items-center justify-center">
                 <img
                   src={active.src}
                   alt={active.alt}
                   decoding="async"
-                  className="max-h-[70vh] w-auto max-w-full rounded-xl object-contain shadow-2xl"
+                  className="max-h-[68vh] w-auto max-w-full rounded-xl object-contain shadow-2xl"
                 />
 
                 {hasMultiple ? (

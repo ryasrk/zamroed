@@ -168,7 +168,7 @@ function DivisionCard({
             {division.title}
           </h3>
 
-          <p className="text-[0.9375rem] leading-relaxed text-ink-secondary">
+          <p className="text-sm leading-relaxed text-ink-secondary">
             {division.detail}
           </p>
 
@@ -301,7 +301,7 @@ export default function VolunteerPage() {
         title="Lima cara untuk ikut bergerak"
         description="Setiap divisi punya pekerjaan nyata dan jadwal yang berbeda. Pilih maksimal dua saat mendaftar — pilihanmu masih bisa berubah setelah sesi induksi."
       >
-        <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <ol className="grid gap-grid-normal sm:grid-cols-2 lg:grid-cols-3 lg:gap-grid-normal">
           {DIVISIONS.map((division, index) => (
             <DivisionCard key={division.slug} division={division} position={index} />
           ))}
@@ -338,7 +338,7 @@ export default function VolunteerPage() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <p className="measure-editorial text-[0.9375rem] leading-relaxed text-white/80 md:text-base">
+                <p className="measure-editorial text-sm leading-relaxed text-white/80 md:text-base">
                   {item.detail}
                 </p>
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/85">
@@ -367,7 +367,7 @@ export default function VolunteerPage() {
                   focusable="false"
                   className="mt-0.5 h-5 w-5 shrink-0 text-brand-primary"
                 />
-                <p className="text-[0.9375rem] leading-relaxed text-ink-secondary">
+                <p className="text-sm leading-relaxed text-ink-secondary">
                   <strong className="font-semibold text-ink">Dapat diverifikasi.</strong> Kode QR
                   pada sertifikat membuka halaman resmi ZAMROED Bergerak yang menampilkan nama,
                   divisi, simpul daerah, dan tanggal aksi sebagai bukti keasliannya.
@@ -379,7 +379,7 @@ export default function VolunteerPage() {
                   focusable="false"
                   className="mt-0.5 h-5 w-5 shrink-0 text-brand-primary"
                 />
-                <p className="text-[0.9375rem] leading-relaxed text-ink-secondary">
+                <p className="text-sm leading-relaxed text-ink-secondary">
                   <strong className="font-semibold text-ink">Menjadi portofolio.</strong> Jam
                   dedikasi tercatat di buku log relawan sehingga dapat dilampirkan untuk keperluan
                   akademik, beasiswa, maupun lamaran kerja.
@@ -391,7 +391,7 @@ export default function VolunteerPage() {
                   focusable="false"
                   className="mt-0.5 h-5 w-5 shrink-0 text-brand-primary"
                 />
-                <p className="text-[0.9375rem] leading-relaxed text-ink-secondary">
+                <p className="text-sm leading-relaxed text-ink-secondary">
                   <strong className="font-semibold text-ink">Milikmu sepenuhnya.</strong> Sertifikat
                   dikirim dalam bentuk berkas digital, aman disimpan, dan dapat dibagikan tanpa
                   perlu meminta ulang ke sekretariat.

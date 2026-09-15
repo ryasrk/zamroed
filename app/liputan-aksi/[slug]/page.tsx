@@ -290,7 +290,7 @@ export default function LiputanAksiPage({ params }: LiputanAksiPageProps) {
             <span className="measure-editorial block">
               Suasana liputan {article.category.toLowerCase()} di {tanggal}.
             </span>
-            <span className="mt-1.5 block text-[0.6875rem] uppercase tracking-[0.08em] text-ink-secondary/70">
+            <span className="mt-1.5 block text-xs uppercase tracking-[0.08em] text-ink-secondary/70">
               Foto: {kreditFoto(article)}
             </span>
           </figcaption>
@@ -360,7 +360,7 @@ export default function LiputanAksiPage({ params }: LiputanAksiPageProps) {
         description="Liputan pendamping yang menyorot aksi, musyawarah, dan solidaritas warga di daerah lain."
         className="mt-20 border-t border-editorial bg-surface md:mt-28"
       >
-        <ul className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+        <ul className="grid gap-grid-normal sm:grid-cols-2 lg:gap-grid-normal">
           {bacaanLain.map((lain) => (
             <li key={lain.slug} className="flex">
               <Card href={`${INDEX_PATH}/${lain.slug}`} interactive className="h-full w-full">

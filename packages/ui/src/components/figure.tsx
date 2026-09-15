@@ -227,14 +227,14 @@ export function Figure({
           )}
         >
           {hasCaption ? (
-            <p className="text-sm leading-relaxed text-ink-secondary md:text-[0.9375rem]">
+            <p className="text-sm leading-relaxed text-ink-secondary ">
               {caption}
             </p>
           ) : null}
           {hasCredit ? (
             <p
               className={cn(
-                'text-[0.6875rem] uppercase leading-snug tracking-[0.08em] text-ink-secondary/70',
+                'text-xs uppercase leading-snug tracking-[0.08em] text-ink-secondary/70',
                 hasCaption && 'mt-1.5',
               )}
             >

@@ -24,7 +24,7 @@ export default function Loading() {
           <div className="mt-3 h-4 w-5/6 max-w-lg rounded-full bg-editorial motion-safe:animate-pulse" />
 
           {/* Kerangka kartu konten */}
-          <div className="mt-12 grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid w-full gap-grid-normal sm:grid-cols-2 lg:grid-cols-3">
             {[0, 1, 2].map((index) => (
               <div
                 key={index}

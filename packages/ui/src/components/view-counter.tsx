@@ -178,7 +178,7 @@ export function ViewCounter({
         aria-hidden={decorative || undefined}
         className={cn(
           'flex flex-wrap items-center gap-x-2.5 gap-y-1.5 leading-snug',
-          isStandalone ? 'text-sm' : 'text-[0.8125rem]',
+          isStandalone ? 'text-sm' : 'text-xs',
         )}
       >
         {/* --- Jumlah dibaca --- */}

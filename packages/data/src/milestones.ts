@@ -56,6 +56,6 @@ export const milestones: Milestone[] = [
     phase: 'Era Transformasi',
     narrative:
       'Jagatirta kini memantau tujuh daerah aliran sungai strategis secara terpadu. Data kualitas air yang sebelumnya tersebar kini terhimpun dalam satu peta yang dapat diakses publik.',
-    image: '/images/hero-banner.jpg',
+    image: '/images/rembuk-warga.jpg',
   },
 ];

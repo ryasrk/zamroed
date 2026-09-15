@@ -253,8 +253,8 @@ export default function Page() {
           <img
             src="/images/hero-movement.jpg"
             alt="Relawan ZAMROED Bergerak berjalan bersama warga menuju titik aksi di lapangan."
-            width={2400}
-            height={1350}
+            width={1600}
+            height={1600}
             fetchPriority="high"
             className="h-full w-full object-cover"
           />
@@ -377,7 +377,7 @@ export default function Page() {
         title="Tiga hal yang tidak kami tawar-menawar"
         description="Nilai bukan hiasan dinding. Ia yang menentukan siapa yang kami dampingi, bagaimana kami mengambil keputusan, dan kapan kami memilih mundur."
       >
-        <RevealGroup className="card-grid gap-5 md:grid-cols-3 md:gap-6">
+        <RevealGroup className="card-grid gap-grid-tight md:grid-cols-3 md:gap-grid-normal">
           {CORE_VALUES.map((value) => {
             const Icon = value.icon;
 
@@ -433,7 +433,7 @@ export default function Page() {
         title="Empat cara kami bekerja di lapangan"
         description="Semuanya berjalan bersamaan, karena krisis ekologi jarang datang satu per satu — dan solusinya jarang bisa dipisah-pisah."
       >
-        <RevealGroup className="card-grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <RevealGroup className="card-grid gap-grid-tight sm:grid-cols-2 lg:grid-cols-4 lg:gap-grid-normal">
           {zamroedPrograms.map((program) => (
             <ProgramCard key={program.id} program={program} />
           ))}
@@ -454,7 +454,7 @@ export default function Page() {
         title="Catatan dari titik aksi"
         description="Ditulis oleh relawan yang benar-benar berada di lokasi, lengkap dengan angka dan tanggalnya."
       >
-        <RevealGroup className="card-grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <RevealGroup className="card-grid gap-grid-tight md:grid-cols-2 lg:grid-cols-3 lg:gap-grid-normal">
           {FEATURED_ARTICLES.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}

@@ -117,6 +117,17 @@ export const sharedPreset = {
         'section-compact': 'clamp(2.25rem, 1.75rem + 2.2vw, 3.25rem)',
         'section-normal': 'clamp(3rem, 2.35rem + 2.9vw, 4.5rem)',
         'section-loose': 'clamp(4rem, 3.1rem + 4vw, 6rem)',
+
+        /**
+         * Jarak antar kartu dalam satu kisi. Sebelumnya tiap halaman memilih
+         * sendiri dari sepuluh nilai berbeda (4, 5, 6, 7, 8, 10, 12, 14, 16,
+         * 24) sehingga kisi di seluruh situs terasa tidak satu sistem. Tiga
+         * tingkat ini mengikuti pola yang sama dengan ritme section, jadi jarak
+         * mendatar dan tegak akhirnya terbaca sebagai satu keluarga ukuran.
+         */
+        'grid-tight': 'clamp(0.875rem, 0.8rem + 0.4vw, 1.25rem)',
+        'grid-normal': 'clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem)',
+        'grid-loose': 'clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem)',
       },
       borderRadius: {
         /**

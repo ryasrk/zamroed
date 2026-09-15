@@ -305,6 +305,7 @@ export function Header({
         hidden={!isOpen}
         onClick={closeDrawer}
         className={cn(
+          !isOpen && 'hidden',
           'fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden',
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
@@ -321,9 +322,9 @@ export function Header({
         ref={drawerRef}
         hidden={!isOpen}
         className={cn(
+          !isOpen && 'hidden',
           'fixed inset-x-0 bottom-0 top-16 z-50 overflow-y-auto lg:hidden',
-          'p-3 sm:p-6 sm:flex sm:items-start sm:justify-center',
-          isOpen && 'animate-fade-up',
+          isOpen && 'animate-fade-up p-3 sm:p-6 sm:flex sm:items-start sm:justify-center',
         )}
       >
         <nav

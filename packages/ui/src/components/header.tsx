@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/cn';
 
 /** Satu item navigasi utama. `href` boleh berupa path internal maupun URL absolut. */
@@ -172,21 +173,31 @@ export function Header({
     <header
       className={cn(
         'sticky top-0 z-50 w-full',
-        'bg-surface/80 backdrop-blur-md supports-[backdrop-filter]:bg-surface/65',
-        'transition-[border-color,box-shadow,background-color] duration-300 ease-crisp',
-        isScrolled
-          ? 'border-b border-editorial shadow-[0_6px_24px_-12px_rgba(2,6,23,0.35)]'
-          : 'border-b border-transparent shadow-none',
         className,
       )}
       data-scrolled={isScrolled || undefined}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+      {/*
+        Lapisan latar belakang header: dipisah agar filter/backdrop-filter tidak
+        menjebak elemen position:fixed (drawer/modal navigasi) di dalamnya.
+      */}
+      <div
+        className={cn(
+          'absolute inset-0 -z-10 bg-surface/85 backdrop-blur-md supports-[backdrop-filter]:bg-surface/75',
+          'transition-[border-color,box-shadow,background-color] duration-300 ease-crisp',
+          isScrolled
+            ? 'border-b border-editorial shadow-[0_6px_24px_-12px_rgba(2,6,23,0.35)]'
+            : 'border-b border-transparent shadow-none',
+        )}
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Merek: tinggi baris dijaga 4rem agar target sentuh nyaman di ponsel. */}
         <Link
           href="/"
           className={cn(
-            'group flex min-h-16 min-w-0 items-center gap-3 rounded-xl py-2 pr-2',
+            'group flex min-h-16 shrink-0 items-center gap-3 rounded-xl py-2 pr-2',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
             'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
           )}
@@ -203,66 +214,66 @@ export function Header({
           </span>
         </Link>
 
-        {/* Desktop: navigasi horizontal dan CTA. */}
-        {hasNav ? (
-          <nav
-            aria-label="Navigasi utama"
-            className="ml-auto hidden items-center gap-1 md:flex"
-          >
-            <ul className="flex items-center gap-1">
-              {navItems.map((item) => {
-                const active = isActiveHref(pathname, item.href);
-                return (
-                  <li key={`${item.href}-${item.label}`}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? 'page' : undefined}
-                      className={cn(
-                        'relative inline-flex min-h-12 items-center rounded-lg px-3 text-sm font-semibold',
-                        'transition-colors duration-200 ease-crisp',
-                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
-                        'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
-                        active
-                          ? 'text-brand-deep'
-                          : 'text-ink-secondary hover:text-brand-deep',
-                      )}
-                    >
-                      {item.label}
-                      {/* Garis aktif bawah: penanda status, bukan hiasan. */}
-                      <span
+        {/* Desktop: navigasi horizontal dan CTA (mulai lg: 1024px agar tidak sesak di tablet). */}
+        <div className="hidden items-center gap-4 lg:flex">
+          {hasNav ? (
+            <nav
+              aria-label="Navigasi utama"
+              className="flex items-center gap-1"
+            >
+              <ul className="flex items-center gap-1">
+                {navItems.map((item) => {
+                  const active = isActiveHref(pathname, item.href);
+                  return (
+                    <li key={`${item.href}-${item.label}`}>
+                      <Link
+                        href={item.href}
+                        aria-current={active ? 'page' : undefined}
                         className={cn(
-                          'absolute inset-x-3 bottom-1 h-[3px] rounded-full bg-brand-primary',
-                          'origin-left transition-transform duration-300 ease-crisp',
-                          active ? 'scale-x-100' : 'scale-x-0',
+                          'relative inline-flex min-h-12 items-center rounded-lg px-3.5 text-sm font-semibold',
+                          'transition-colors duration-200 ease-crisp',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
+                          'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
+                          active
+                            ? 'text-brand-deep'
+                            : 'text-ink-secondary hover:text-brand-deep',
                         )}
-                        aria-hidden="true"
-                      />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        ) : (
-          <span className="ml-auto" />
-        )}
+                      >
+                        {item.label}
+                        {/* Garis aktif bawah: penanda status, bukan hiasan. */}
+                        <span
+                          className={cn(
+                            'absolute inset-x-3.5 bottom-1 h-[3px] rounded-full bg-brand-primary',
+                            'origin-left transition-transform duration-300 ease-crisp',
+                            active ? 'scale-x-100' : 'scale-x-0',
+                          )}
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          ) : null}
 
-        {hasCta ? (
-          <Link
-            href={ctaHref as string}
-            className={cn(
-              'ml-auto hidden min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl px-5 md:inline-flex',
-              'bg-brand-primary text-sm font-semibold text-white',
-              'shadow-[0_2px_0_0_var(--brand-deep)] transition-[background-color,box-shadow,transform] duration-200 ease-crisp',
-              'hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2',
-              'focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
-            )}
-          >
-            {ctaLabel}
-          </Link>
-        ) : null}
+          {hasCta ? (
+            <Link
+              href={ctaHref as string}
+              className={cn(
+                'inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl px-5',
+                'bg-brand-primary text-sm font-semibold text-white',
+                'shadow-[0_2px_0_0_var(--brand-deep)] transition-[background-color,box-shadow,transform] duration-200 ease-crisp',
+                'hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2',
+                'focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
+              )}
+            >
+              {ctaLabel}
+            </Link>
+          ) : null}
+        </div>
 
-        {/* Mobile: tombol hamburger minimal 48x48. */}
+        {/* Mobile & Tablet: tombol menu minimal 48x48. */}
         {hasNav || hasCta ? (
           <button
             ref={toggleRef}
@@ -272,7 +283,7 @@ export function Header({
             aria-controls={drawerId}
             aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
             className={cn(
-              'ml-auto inline-grid h-12 w-12 shrink-0 place-items-center rounded-xl md:hidden',
+              'inline-grid h-12 w-12 shrink-0 place-items-center rounded-xl lg:hidden',
               'border border-editorial bg-surface-pure text-ink',
               'transition-[background-color,border-color,color] duration-200 ease-crisp',
               'hover:border-brand-primary hover:text-brand-deep',
@@ -280,55 +291,64 @@ export function Header({
               'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
             )}
           >
-            {/* Ikon dua garis/bidang yang dianimasikan menjadi silang saat terbuka. */}
-            <span className="relative block h-5 w-6" aria-hidden="true">
-              <span
-                className={cn(
-                  'absolute left-0 block h-[3px] w-6 rounded-full bg-current',
-                  'transition-transform duration-300 ease-crisp',
-                  isOpen ? 'top-[8.5px] rotate-45' : 'top-0',
-                )}
-              />
-              <span
-                className={cn(
-                  'absolute left-0 block h-[3px] w-6 rounded-full bg-current',
-                  'transition-transform duration-300 ease-crisp',
-                  isOpen ? 'top-[8.5px] scale-x-0' : 'top-2',
-                )}
-              />
-              <span
-                className={cn(
-                  'absolute left-0 block h-[3px] w-6 rounded-full bg-current',
-                  'transition-transform duration-300 ease-crisp',
-                  isOpen ? 'top-[8.5px] -rotate-45' : 'top-4',
-                )}
-              />
-            </span>
+            {isOpen ? (
+              <X className="h-6 w-6 text-ink" aria-hidden="true" />
+            ) : (
+              <Menu className="h-6 w-6 text-ink" aria-hidden="true" />
+            )}
           </button>
         ) : null}
       </div>
 
-      {/* Drawer mobile: panel layar penuh, target sentuh besar. */}
+      {/* Backdrop overlay saat drawer terbuka */}
+      <div
+        hidden={!isOpen}
+        onClick={closeDrawer}
+        className={cn(
+          'fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden',
+          isOpen ? 'opacity-100' : 'pointer-events-none opacity-0',
+        )}
+        aria-hidden="true"
+      />
+
+      {/* Drawer / Modal Card navigasi:
+          - Di ponsel: mengisi ruang layar secara elegan dengan batas kartu rapi.
+          - Di tablet/desktop: modal card compact di tengah (max-w-lg), bukan membentang 1800px.
+          - Padding luas, teks bernapas, tidak mepet batas garis.
+      */}
       <div
         id={drawerId}
         ref={drawerRef}
         hidden={!isOpen}
         className={cn(
-          'fixed inset-x-0 bottom-0 top-16 z-40 md:hidden',
-          'bg-canvas/[0.98] backdrop-blur-lg',
+          'fixed inset-x-0 bottom-0 top-16 z-50 overflow-y-auto lg:hidden',
+          'p-3 sm:p-6 sm:flex sm:items-start sm:justify-center',
           isOpen && 'animate-fade-up',
         )}
       >
         <nav
           aria-labelledby={navLabelId}
-          className="flex h-full flex-col gap-1 overflow-y-auto px-4 pb-8 pt-4 sm:px-6"
+          className={cn(
+            'flex w-full flex-col overflow-hidden rounded-2xl border border-editorial',
+            'bg-surface-pure shadow-2xl p-4 sm:p-6 sm:max-w-lg mx-auto',
+          )}
         >
           <p id={navLabelId} className="sr-only">
             Navigasi utama
           </p>
 
+          {/* Header kartu modal: Label Menu ringkas */}
+          <div className="mb-4 flex items-center justify-between border-b border-editorial pb-3.5">
+            <span className="text-sm font-bold tracking-tight text-ink">
+              Navigasi
+            </span>
+            <span className="rounded-md bg-brand-soft px-2.5 py-1 text-xs font-semibold text-brand-deep">
+              Menu
+            </span>
+          </div>
+
           {hasNav ? (
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-1.5">
               {navItems.map((item, index) => {
                 const active = isActiveHref(pathname, item.href);
                 return (
@@ -338,24 +358,24 @@ export function Header({
                       onClick={closeDrawer}
                       aria-current={active ? 'page' : undefined}
                       className={cn(
-                        'flex min-h-[3.5rem] w-full items-center gap-3 rounded-xl px-4 py-3',
-                        'text-lg font-semibold transition-colors duration-200 ease-crisp',
+                        'flex min-h-[3.25rem] w-full items-center gap-3.5 rounded-xl px-4 py-3',
+                        'text-base font-semibold transition-colors duration-200 ease-crisp',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
                         'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
                         active
                           ? 'bg-brand-soft text-brand-deep'
-                          : 'text-ink hover:bg-brand-soft hover:text-brand-deep',
+                          : 'text-ink hover:bg-brand-soft/60 hover:text-brand-deep',
                       )}
                     >
                       <span
-                        className="w-6 shrink-0 text-xs font-bold tabular-nums text-ink-secondary"
+                        className="w-6 shrink-0 font-mono text-xs font-bold tabular-nums text-ink-secondary"
                         aria-hidden="true"
                       >
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <span className="min-w-0 flex-1 truncate">{item.label}</span>
                       {active ? (
-                        <span className="text-xs font-bold uppercase tracking-wider text-brand-primary">
+                        <span className="rounded-full bg-brand-primary/15 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider text-brand-primary">
                           Aktif
                         </span>
                       ) : null}
@@ -375,7 +395,7 @@ export function Header({
               href={ctaHref as string}
               onClick={closeDrawer}
               className={cn(
-                'mt-4 flex min-h-[3.5rem] w-full items-center justify-center gap-2 rounded-xl px-5',
+                'mt-5 flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl px-5',
                 'bg-brand-primary text-base font-semibold text-white',
                 'shadow-[0_3px_0_0_var(--brand-deep)] transition-colors duration-200 ease-crisp',
                 'hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2',
@@ -394,9 +414,9 @@ export function Header({
               toggleRef.current?.focus();
             }}
             className={cn(
-              'mt-auto flex min-h-12 w-full items-center justify-center rounded-xl',
-              'border border-editorial px-4 text-sm font-semibold text-ink-secondary',
-              'transition-colors duration-200 ease-crisp hover:text-brand-deep',
+              'mt-3 flex min-h-12 w-full items-center justify-center rounded-xl',
+              'border border-editorial px-4 py-2.5 text-sm font-semibold text-ink-secondary',
+              'transition-colors duration-200 ease-crisp hover:bg-brand-soft/40 hover:text-brand-deep',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent',
               'focus-visible:ring-offset-2 focus-visible:ring-offset-canvas',
             )}

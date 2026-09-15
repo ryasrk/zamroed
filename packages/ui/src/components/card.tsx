@@ -21,10 +21,18 @@ import { cn } from '../lib/cn';
  * supaya media yang mepet tepi (mis. `<img/>` sebagai anak pertama) tetap
  * flush, sementara bagian setelahnya tetap mendapat padding atas.
  */
+/**
+ * Ritme vertikal kartu. Setiap bagian memiliki padding atas sendiri, lalu
+ * bagian yang *mengikuti* bagian kartu lain kehilangan padding atasnya
+ * HANYA bila tidak ada garis pemisah (divider).
+ *
+ * Bila ada garis pemisah (border-b pada header atau border-t pada footer),
+ * padding atas dipertahankan penuh agar teks tidak mepet ke batas garis.
+ */
 const CARD_RHYTHM = [
-  '[&>[data-slot=card-header]~[data-slot=card-body]]:pt-0',
-  '[&>[data-slot=card-header]~[data-slot=card-footer]]:pt-0',
-  '[&>[data-slot=card-body]~[data-slot=card-footer]]:pt-0',
+  '[&>[data-slot=card-header]:not([data-divider=true])~[data-slot=card-body]]:pt-0',
+  '[&>[data-slot=card-header]:not([data-divider=true])~[data-slot=card-footer]]:pt-0',
+  '[&>[data-slot=card-body]~[data-slot=card-footer]:not([data-divider=true])]:pt-0',
 ].join(' ');
 
 /** Cangkang kartu: permukaan editorial, border tipis, radius 16, media terpotong. */
@@ -177,6 +185,7 @@ export function CardHeader({
   return (
     <div
       data-slot="card-header"
+      data-divider={divider ? 'true' : undefined}
       className={cn(
         'flex flex-col gap-3',
         SECTION_PAD,
@@ -254,6 +263,7 @@ export function CardFooter({ divider = false, className, children, ...rest }: Ca
   return (
     <div
       data-slot="card-footer"
+      data-divider={divider ? 'true' : undefined}
       className={cn(
         'mt-auto flex flex-wrap items-center gap-3',
         SECTION_PAD,
